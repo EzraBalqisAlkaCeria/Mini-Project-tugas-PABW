@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Toko Buku</title>
+    <script>
+        function loadTokoBuku() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'pabw.json', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    displayTokoBuku(data);
+                }
+            };
+            xhr.send();
+        }
+
+        function displayTokoBuku(data) {
+            const tokoDiv = document.getElementById('toko-info');
+            const koleksiTable = document.getElementById('koleksi-table');
+
+            tokoDiv.innerHTML = `
+                <h2>${data.nama_toko}</h2>
+                <p>Pengarang: ${data.pengarang}</p>
+                <p>Alamat: ${data.alamat}</p>
+            `;
+
+            let tableHtml = '<table><tr><th>Judul Buku</th><th>Tahun Terbit</th></tr>';
+            data.koleksi_buku.forEach(buku => {
+                tableHtml += `<tr><td>${buku.judul}</td><td>${buku.tahun_terbit}</td></tr>`;
+            });
+            tableHtml += '</table>';
+            koleksiTable.innerHTML = tableHtml;
+        }
+
+        loadTokoBuku();
+    </script>
 </head>
 <body>
-    
+    <div id="toko-info"></div>
+    <div id="koleksi-table"></div>
 </body>
 </html>

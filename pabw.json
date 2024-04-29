@@ -1,6 +1,16 @@
 {
-    "to": "Tove",
-    "from":"Jani",
-    "heading":"reminder",
-    "body":"Don't forget me this weekend!"
+    "nama_toko": "Toko Buku ABC",
+    "pengarang": "John Doe",
+    "alamat": "Jl. Buku Indah No. 123",
+    "koleksi_buku": [
+        {
+            "judul": "Pemrograman Web",
+            "tahun_terbit": 2022
+        },
+        {
+            "judul": "Algoritma dan Struktur Data",
+            "tahun_terbit": 2021
+        }
+    ]
 }
+
